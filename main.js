@@ -35,3 +35,19 @@ const currentDate = new Intl.DateTimeFormat('es-CO', options).format(new Date())
 
 /* Actualizar el contenido del elemento con el id "current-date"*/
 document.getElementById('current-date').textContent = currentDate;
+
+// Mapa
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar el mapa
+    var map = L.map('map').setView([4.1433, -73.6376], 13); // Coordenadas de Villavicencio
+
+    // Capa de mapas
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    // Marcador
+    L.marker([4.1433, -73.6376]).addTo(map) // Coordenadas del marcador en Villavicencio
+        .bindPopup('Un marcador en Villavicencio, Meta!')
+        .openPopup();
+});
